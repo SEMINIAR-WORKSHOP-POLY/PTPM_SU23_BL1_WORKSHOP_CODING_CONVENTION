@@ -2,74 +2,89 @@ package main;
 
 import java.util.Scanner;
 
+/**
+ *
+ * @author hangnt
+ */
 public class Main {
 
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
+        //1. Nhập và xuất tên, năm sinh, ngành học, điểm môn Java của bạn.
+        // 2. Nhập điểm Java trong khoảng từ 0-10. Đưa ra thông báo qua môn hay học lại?
+        // 3. Nhập mảng số lượng SV các lớp. Và xuất mảng số lượng SV ra
         Scanner scanner = new Scanner(System.in);
-        int chucNang;
+        int chucNang = 0;
         do {
-            System.out.println("1. Thông tin NYC");
-            System.out.println("2. Check điểm sinh viên");
-            System.out.println("3. Số lượng sinh viên các lớp");
-            System.out.println("0. THOÁT CHƯƠNG TRÌNH");
-            System.out.print("Mời bạn lựa chọn chức năng: ");
+            System.out.println("1. Nhap thong tin");
+            System.out.println("2. Thong bao ket qua");
+            System.out.println("3. Nhap xuat mang");
+            System.out.println("0. Thoat");
+            System.out.print("Moi nhap chuc nang: ");
+//            chucNang = scanner.nextInt();
+//            // C1: scanner.nextLine();
+//            scanner.nextLine();
+            // C2: Ep kieu => valueOf hoac parseInt
             chucNang = Integer.valueOf(scanner.nextLine());
             switch (chucNang) {
                 case 1: {
-                    System.out.print("Mời nhập tên NYC: ");
+                    // Nhap
+                    System.out.print("Moi nhap ten:");
                     String ten = scanner.nextLine();
-                    System.out.print("Mời nhập tuổi NYC: ");
-                    int tuoi = Integer.parseInt(scanner.nextLine());
-                    System.out.print("Mời nhập địa chỉ NYC: ");
-                    String diaChi = scanner.nextLine();
-                    System.out.print("Mời nhập quê quán NYC: ");
-                    String queQuan = scanner.nextLine();
-                    System.out.println("Thông tin NYC: ");
-                    System.out.println("Tên: " + ten);
-                    System.out.println("Tuổi: " + tuoi);
-                    System.out.println("Địa chỉ: " + diaChi);
-                    System.out.println("Quê quán: " + queQuan);
+                    System.out.print("Moi nhap nam sinh: ");
+                    int namSinh = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Moi nhap nganh hoc:");
+                    String nganhHoc = scanner.nextLine();
+                    System.out.print("Moi nhap diem Java:");
+                    int diemMonJava = scanner.nextInt();
+                    // In 
+                    System.out.println("Ten: " + ten + " - Nam Sinh: " + namSinh
+                            + " - Nganh hoc: " + nganhHoc
+                            + " - Diem Java: " + diemMonJava);
                     break;
                 }
                 case 2: {
                     int diem = -1;
                     while (diem < 0 || diem > 10) {
-                        System.out.print("Mời nhập điểm:");
+                        System.out.print("Moi ban nhap diem: ");
+//                        diem = scanner.nextInt();
                         diem = Integer.valueOf(scanner.nextLine());
                     }
                     if (diem < 5) {
-                        System.out.println("Bạn fail rôiiiii");
+                        System.out.println("Hoc lai");
                     } else {
-                        System.out.println("Bạn đã qua môn");
+                        System.out.println("Qua mon roi. Hihi");
                     }
                     break;
                 }
                 case 3: {
-                    System.out.print("Mời nhập số lượng lớp: ");
-                    int soLuongLop = Integer.parseInt(scanner.nextLine());
-                    int[] arrSoLuongSinhVien = new int[soLuongLop];
+                    System.out.print("Moi nhap vao so luong lop: ");
+                    int soLuongLop = Integer.valueOf(scanner.nextLine());
+                    int[] danhSachSoLuongSinhViens = new int[soLuongLop];
+                    // Nhap 
+                    System.out.println("Moi nhap danh sach:");
                     for (int i = 0; i < soLuongLop; i++) {
-                        System.out.print("Mời nhập số sinh viên ở "
-                                + "lớp thứ " + (i + 1) + ": ");
-                        arrSoLuongSinhVien[i] = Integer.parseInt(scanner.nextLine());
+                        danhSachSoLuongSinhViens[i]
+                                = Integer.valueOf(scanner.nextLine());
                     }
-
-                    System.out.println("Số lượng sinh viên các lớp:");
+                    // In 
+                    System.out.println("In danh sach");
                     for (int i = 0; i < soLuongLop; i++) {
-                        System.out.println("Số sinh viên lớp thứ "
-                                + (i + 1) + ": " + arrSoLuongSinhVien[i]);
+                        System.out.println(danhSachSoLuongSinhViens[i]);
                     }
                     break;
                 }
-                case 0:
-                    System.out.println("Hẹn gặp lại!");
-                    break;
                 default: {
-                    System.out.println("Mời chọn lại chức năng từ 0~3!");
+                    System.out.println("Chuc nang khong ton tai");
                     break;
                 }
             }
         } while (chucNang != 0);
+
     }
 
 }
+
